@@ -1,5 +1,5 @@
 {
-    "family": "ExampleTask",
+    "family": "ExampleTask_1",
     "containerDefinitions": [
         {
             "image": "447895454160.dkr.ecr.us-east-1.amazonaws.com/example/nginx",
