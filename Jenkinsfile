@@ -8,19 +8,11 @@ pipeline {
     string(name: 'TASK', defaultValue: 'ExampleTask', description: 'AWS ECS Task name')
   }
   stages {
-    stage('BuildStage') {
+    stage('Register new Task Defenition') {
       steps {
-        sh "./cicd/build.sh -b ${env.BUILD_ID} -n ${params.REPONAME} -e ${params.ECR} -r ${params.REGION}"
+        sh 'aws ecs register-task-definition --cli-input-json file://task_definition.json'
       }
     }
-    stage('DeployStage') {
-      steps {
-        sh "./cicd/deploy.sh"
-      }
+   
     }
-    stage('TestStage') {
-      steps {
-        sh "./cicd/test.sh"
-      }
-    }
-  }
+}
